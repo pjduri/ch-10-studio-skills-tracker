@@ -25,7 +25,7 @@ public class SkillsController {
     @GetMapping("form")
     @ResponseBody
     public String displaySkillForm() {
-        return "<form method=\"post\">\n" +
+        return "<form method=\"post\" action=\"complete\">\n" +
                 "    <label>Name: </label> <br>\n" +
                 "    <input type=\"text\" name=\"name\">\n" +
                 "    <br>\n" +
@@ -56,7 +56,7 @@ public class SkillsController {
                 "</form>";
     }
 
-    @PostMapping("form")
+    @PostMapping("form/complete")
     @ResponseBody
     public String displayResults(@RequestParam String name,
                                  @RequestParam String firstChoice,
@@ -64,12 +64,20 @@ public class SkillsController {
                                  @RequestParam String thirdChoice) {
 
         return "<h1>" + name + "</h1>\n" +
-                "<ol>\n" +
-                "    <li>" + firstChoice+ "</li>\n" +
-                "    <li>" + secondChoice+ "</li>\n" +
-                "    <li>" + thirdChoice+ "</li>\n" +
-                "</ol>";
+                "<table>\n" +
+                "    <tr>\n" +
+                "        <th>First Choice: </th>\n" +
+                "        <td>" + firstChoice+ "</td>\n" +
+                "    </tr>\n" +
+                "    <tr>\n" +
+                "        <th>Second Choice: </th>\n" +
+                "        <td>" + secondChoice+ "</td>\n" +
+                "    </tr>\n" +
+                "    <tr>\n" +
+                "        <th>Third Choice: </th>\n" +
+                "        <td>" + thirdChoice+ "</td>\n" +
+                "    </tr>\n" +
+                "</table>";
     }
-
 
 }
